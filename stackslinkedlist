@@ -1,0 +1,88 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+#include<stdlib.h>
+void push();
+void pop();
+void display();
+int front=0,rear=0;
+struct node
+{
+    char name[20];
+    int id;
+    struct node* ptr;
+}*head,*tail,*p,*q;
+void main()
+{
+    int ch=0;
+    head=(struct node*)malloc(sizeof(struct node));
+    while(ch!=4)
+    {
+        printf("1.push elements into the queue\n2.pop out and  element from the queue\n3.display the elements entered in the queue\n4.exit!!");
+        printf("\nenter your choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:push();break;
+            case 2:pop();break;
+            case 3:display();break;
+            default:printf("invalid choice!!!!");break;
+        }
+    }
+}
+void push()
+{
+    struct node*p=(struct node*)malloc(sizeof(struct node));
+    if(front-rear==5)
+    {
+        printf("\nqueue is full noo more values can be added!!");
+    }
+    else
+    {
+       rear++;
+       printf("\nenter the name of the person you want to enter:");
+       scanf("%d",&p->name);
+       printf("\nenter id that person:");
+       scanf("%d",&p->id);
+       printf("\nsuccessfully inserted!!!");
+       tail->ptr=p;
+       p->ptr=NULL;
+       tail=p;
+    }
+}
+void pop()
+{
+    if(front-rear==0)
+    {
+        printf("\nqueue is empty so you add values to it!!");
+    }
+    else{
+       front++;
+       q=head;
+
+        printf("\nsuccessfully deleted!!!!");
+    }
+}
+void display()
+{
+   struct node*q=(struct node*)malloc(sizeof(struct node));
+   if(front-rear==0)
+    {
+        printf("\nqueue is empty so you add values to it!!");
+    }
+    else
+    {
+    q=head;
+    head=head->ptr;
+    free(q);
+    while(q->ptr!=NULL)
+    {
+    printf("%s %d",q->name,q->id);
+    q=q->ptr;
+    }
+    }
+}
+
+
+
+
